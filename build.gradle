@@ -1,0 +1,43 @@
+plugins {
+  id "com.fizzpod.sweeney" version "2.0.0"
+  id "java"
+  id "nebula.maven-publish" version "4.4.4"
+  id "nebula.source-jar" version "4.4.4"
+  id "nebula.contacts" version "2.2.0"
+}
+
+sweeney {
+  enforce "jdk:[1.8, 1.8]"
+}
+
+repositories {
+  jcenter()
+}
+
+dependencies {
+  compile(
+          "com.google.code.findbugs:jsr305:${jsr305_version}"
+  );
+  testCompile(
+          "org.testng:testng:${testng_version}",
+          "com.google.truth:truth:${truth_version}",
+          "com.google.guava:guava-testlib:${guava_version}"
+  );
+}
+
+tasks.withType(JavaCompile).each {
+  it.sourceCompatibility = JavaVersion.VERSION_1_8
+  it.targetCompatibility = JavaVersion.VERSION_1_8
+  it.options.encoding = "UTF-8"
+  it.options.compilerArgs = ["-Xlint:all"]
+}
+
+test {
+  useTestNG()
+  minHeapSize = "128m"
+  maxHeapSize = "128m"
+}
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '2.7'
+}
