@@ -12,18 +12,19 @@ public enum TenDigit {
   eighty,
   ninety;
 
-  final static int[] tens = {90, 80, 70, 60, 50, 40, 30, 20, 10};
-  final static TenDigit[] VALUES = values();
+  final static int[] scale = {19, 29, 39, 49, 59, 69, 79, 89, 99};
 
-  public static TenDigit of(int value) {
-    if (value < 10 || value > 99) {
-      throw new IllegalArgumentException(
-        String.format("value [%s] is not in range [10 to 99]", value));
+  final static TenDigit[] tens =
+    {ten, twenty, thirty, forty, fifty, sixty, seventy, eighty, ninety};
+
+  public static TenDigit of(int digit) {
+    if (digit < 10 || 99 < digit) {
+      throw new IllegalArgumentException(String.format("%s must be between 10 and 99", digit));
     }
 
-    for (int i = 0, j = tens.length - 1; ; i++, j--) {
-      if (value >= tens[i]) {
-        return VALUES[j];
+    for (int i = 0; ; i++) {
+      if (digit <= scale[i]) {
+        return tens[i];
       }
     }
   }

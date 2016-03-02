@@ -2,7 +2,7 @@
 
 The aim of this library is to store the digits of an integer up to a billion (exclusive) in a Value Object, encoded as en_GB "spoken" words
 
-A new type "NineDigitEnGB" encapsulates int from 0 to 9 decimal digits inclusive (http://www.wolframalpha.com/input/?i=999999999).
+A new type "NineDigitGBWords" encapsulates nine digits from 0 to 9 inclusive (http://www.wolframalpha.com/input/?i=999999999).
 This represents a "value" class and implements hashcode/equals/comparable of int and could be used as a field value in other domain objects.
 Alternatives to boiler-plate, [AutoValue](https://github.com/google/auto/tree/master/value),[Data classes](https://kotlinlang.org/docs/reference/data-classes.html)
  
@@ -22,6 +22,7 @@ This is the same idea as "Tiny Types" like a Postcode or Credit Card Number are 
 Some of the domain reference
 https://en.wikipedia.org/wiki/Long_and_short_scales
 http://www.wolframalpha.com/input/?i=999999999
+http://www.blackwasp.co.uk/numbertowords_3.aspx
 
 #### Test Libraries
 
@@ -52,7 +53,3 @@ Project requires Java 8
  46945671	| forty six million nine hundred and forty five thousand five hundred and seventy one
 999999999	| nine hundred and ninety nine million nine hundred and ninety nine thousand nine hundred and ninety nine
 ```
-
-#### References
-
-http://www.blackwasp.co.uk/numbertowords_3.aspx

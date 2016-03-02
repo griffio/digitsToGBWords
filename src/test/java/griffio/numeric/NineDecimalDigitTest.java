@@ -1,5 +1,6 @@
 package griffio.numeric;
 
+import griffio.numeric.text.NineDigitGBWords;
 import org.testng.annotations.Test;
 
 import com.google.common.testing.EqualsTester;
@@ -10,7 +11,7 @@ public class NineDecimalDigitTest {
 
   NineDigit one_hundred = NineDigit.create(100);
   NineDigit nine_hundred = NineDigit.create(999);
-  NineDigit zero = NineDigit.create(100);
+  NineDigit zero = NineDigit.create(0);
 
   @Test(dataProvider = "invalid-input", dataProviderClass = FixtureProviders.class,
     expectedExceptions = IllegalArgumentException.class,
@@ -51,14 +52,7 @@ public class NineDecimalDigitTest {
   }
   
   @Test
-  public void tests() {
-    
-    int x = 999999999 / 1000;
-    int y = 999999999 % 1000;
-
-    System.out.println("x = " + x);
-    System.out.println("x = " + y);
-    
+  public void digit_value() {
+    assertThat(one_hundred).isEqualTo(new NineDigitGBWords(one_hundred).digitValue());
   }
-  
 }
